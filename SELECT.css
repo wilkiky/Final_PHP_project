@@ -1,0 +1,31 @@
+/* Button Style */
+.SELECT{
+
+    -webkit-border-radius: 28px;
+    -moz-border-radius: 28px;
+    border-radius: 28px;
+    font-family: Arial;
+    color: #ffffff;
+    font-size: 20px;
+    background: #EAAB00;
+    padding: 10px 20px 10px 20px;
+    text-decoration: none;
+    margin: 10px;
+    display: inline-block;
+    margin-top: 20px;
+    /*moves buttons away from list*/
+
+}
+
+.SELECT:hover {
+    opacity:.85;
+    cursor: pointer;
+}
+.SELECT:active {
+    border: 1px solid #d19800;
+    box-shadow: 0 0 10px 5px #d19800 inset;
+    -webkit-box-shadow: 0 0 10px 5px #d19800 inset;
+    -moz-box-shadow: 0 0 10px 5px #d19800 inset;
+    -ms-box-shadow: 0 0 10px 5px #d19800 inset;
+    -o-box-shadow: 0 0 10px 5px #d19800 inset;
+}

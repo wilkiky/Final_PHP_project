@@ -1,0 +1,51 @@
+
+1) Install Choclatey onto the PC this is a 
+@powershell -NoProfile -ExecutionPolicy unrestricted -Command "iex ((new-object net.webclient).DownloadString('https://chocolatey.org/install.ps1'))" && SET PATH=%PATH%;%ALLUSERSPROFILE%\chocolatey\bin
+
+
+
+
+Select i.username AS username,i.FirstName AS FirstName,i.LastName AS LastName,i.Issue AS Issue,i.Other AS Other,t1.Date AS Create_Date,t2.Date AS Last_Status,t1.ticket_ID AS ticket_ID,i.ticket_stat AS ticket_stat,(to_days(t2.Date) - to_days(t1.Date)) AS DIFF 
+from ticket_history t1 
+join ticket_history t2 
+on t1.ticket_ID = t2.ticket_ID
+join ticket i 
+on t1.ticket_ID = i.ticket_ID 
+where t1.Event = 'In-Progress' and t2.Event = 'In-Progress' and i.ticket_stat <> 'COMPLETED' and i.ticket_stat <> 'UNRESOLVED' and i.ticket_stat <> 'TRANSFERED' and i.ticket_stat <> 'NEW' and exists
+       (SELECT max(h.history_ID) from ticket_history h where h.ticket_ID = t2.ticket_ID and h.Event group by h.history_ID) having DIFF > 1
+UNION
+Select i.username AS username,i.FirstName AS FirstName,i.LastName AS LastName,i.Issue AS Issue,i.Other AS Other,t1.Date AS Create_Date,t2.Date AS Last_Status,t1.ticket_ID AS ticket_ID,i.ticket_stat AS ticket_stat,(to_days(t2.Date) - to_days(t1.Date)) AS DIFF 
+from ticket_history t1 
+join ticket_history t2 
+on (t1.ticket_ID = t2.ticket_ID)
+join ticket i 
+on t1.ticket_ID = i.ticket_ID 
+where t1.Event = 'Unresolved' and t2.Event = 'Unresolved' and i.ticket_stat <> 'COMPLETED' and i.ticket_stat <> 'IN-PROGRESS' and i.ticket_stat <> 'TRANSFERED' and i.ticket_stat <> 'NEW' and exists
+       (select max(h.history_ID) from ticket_history h where h.ticket_ID = t2.ticket_ID  group by h.history_ID) having DIFF > 1
+UNION
+Select i.username AS username,i.FirstName AS FirstName,i.LastName AS LastName,i.Issue AS Issue,i.Other AS Other,t1.Date AS Create_Date,t2.Date AS Last_Status,t1.ticket_ID AS ticket_ID,i.ticket_stat AS ticket_stat,(to_days(t2.Date) - to_days(t1.Date)) AS DIFF 
+from ticket_history t1 
+join ticket_history t2 
+on t1.ticket_ID = t2.ticket_ID
+join ticket i 
+on t1.ticket_ID = i.ticket_ID 
+where t1.Event = 'Transfered' and t2.Event = 'Transfered' and i.ticket_stat <> 'COMPLETED' and i.ticket_stat <> 'UNRESOLVED' and i.ticket_stat <> 'IN-PROGRESS' and i.ticket_stat <> 'NEW' and exists
+       (select max(h.history_ID) from ticket_history h where h.ticket_ID = t2.ticket_ID   group by h.history_ID) having DIFF > 1
+UNION
+Select i.username AS username,i.FirstName AS FirstName,i.LastName AS LastName,i.Issue AS Issue,i.Other AS Other,t1.Date AS Create_Date,t2.Date AS Last_Status,t1.ticket_ID AS ticket_ID,i.ticket_stat AS ticket_stat,(to_days(t2.Date) - to_days(t1.Date)) AS DIFF 
+from ticket_history t1 
+join ticket_history t2 
+on t1.ticket_ID = t2.ticket_ID
+join ticket i 
+on t1.ticket_ID = i.ticket_ID 
+where t1.Event = 'Closed' and t2.Event = 'Closed' and i.ticket_stat <> 'NEW' and i.ticket_stat <> 'UNRESOLVED' and i.ticket_stat <> 'TRANSFERED' and i.ticket_stat <> 'IN-PROGRESS' and exists
+       (select max(h.history_ID) from ticket_history h where h.ticket_ID = t2.ticket_ID group by h.history_ID) having (DIFF > 1)
+
+Select t.ticket_ID, k.username, k.FirstName, k.LastName, k.UserType, k.Issue, k.ticket_stat, k.reasons, t.transfered_by, t.Date, 
+			(Select COUNT(y.transfered_by) from ticket_history y where y.Date between cast('2016/01/01' as date) and cast('2099/12/31' as date) and y.ticket_ID = t.ticket_ID GROUP BY y.ticket_ID) AS TRANSFERS
+from ticket_history t 
+JOIN ticket k
+on t.ticket_ID = k.ticket_ID
+where exists ( Select y.* from ticket_history y where y.Date between cast('2016/01/01' as date) and cast('2099/12/31' as date) and y.Event = 'Transfered')
+GROUP BY t.history_ID
+HAVING TRANSFERS > 1

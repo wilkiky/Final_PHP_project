@@ -1,0 +1,86 @@
+@import url("form.css");
+
+body {
+    background-attachment: scroll;
+	background-color: #981E32;
+	/*background-image:file:///C|/Users/Tyler/Documents/Login/images/umsl_type_white.jpg);*/
+	background-position: center center;
+	background-repeat: no-repeat;
+    color: white;
+	
+	/* Safari 4-5, Chrome 1-9 */
+  background: -webkit-gradient(radial, center center, 0, center center, 460, from(#981E32), to(#000000));
+
+  /* Safari 5.1+, Chrome 10+ */
+  background: -webkit-radial-gradient(circle, #981E32, #000000);
+
+  /* Firefox 3.6+ */
+  background: -moz-radial-gradient(circle, #981E32, #000000);
+
+  /* IE 10 */
+  background: -ms-radial-gradient(circle, #981E32, #000000);
+}
+
+
+#T1{
+    width: 50%;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 5%;
+    color: white;
+}
+
+#T2{
+    width: 50%;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 1%;
+    color: white;
+}
+
+td{
+    color: white;
+    text-align: center;
+}
+
+th{
+    color: white;
+    font-style: bold;
+    font-size: 30px;
+}
+
+h1{
+    color: white;
+
+}
+
+
+/* Edit User Button Style */
+.EUsubmit{
+
+  -webkit-border-radius: 28px;
+  -moz-border-radius: 28px;
+  border-radius: 28px;
+  font-family: Arial;
+  color: #ffffff;
+  font-size: 20px;
+  background: #EAAB00;
+  padding: 10px 20px 10px 20px;
+  text-decoration: none;
+    margin: 10px;
+    display: inline-block;
+
+}
+
+.EUsubmit:hover {
+    opacity:.85;
+    cursor: pointer; 
+}
+.EUsubmit:active {
+    border: 1px solid #d19800;
+    box-shadow: 0 0 10px 5px #d19800 inset; 
+    -webkit-box-shadow:0 0 10px 5px #d19800 inset ;
+    -moz-box-shadow: 0 0 10px 5px #d19800 inset;
+    -ms-box-shadow: 0 0 10px 5px #d19800 inset;
+    -o-box-shadow: 0 0 10px 5px #d19800 inset;
+

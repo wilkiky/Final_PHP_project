@@ -1,0 +1,108 @@
+
+
+body {
+    background-attachment: scroll;
+	background-color: #981E32;
+	background-position: center center;
+	background-repeat: no-repeat;
+    color: white;
+	
+	/* Safari 4-5, Chrome 1-9 */
+  background: -webkit-gradient(radial, center center, 0, center center, 460, from(#981E32), to(#000000));
+
+  /* Safari 5.1+, Chrome 10+ */
+  background: -webkit-radial-gradient(circle, #981E32, #000000);
+
+  /* Firefox 3.6+ */
+  background: -moz-radial-gradient(circle, #981E32, #000000);
+
+  /* IE 10 */
+  background: -ms-radial-gradient(circle, #981E32, #000000);
+}
+
+#Customer table{
+    
+    margin-left: auto;
+    margin-right: auto;
+    padding-top: 20px;
+    width: 60%;
+}
+
+#Reports table{
+    
+    margin-left: auto;
+    margin-right: auto;
+    padding-top: 20px;
+    width: 60%;
+}
+
+#Student table{
+    
+    width: 90%;
+    left: 0%;
+    right: 25%%;
+}
+
+.InfoTable{
+
+
+    position:absolute;
+    bottom: 150px;
+    width: 100%;
+    left: 0%;
+    right: 25%%;
+
+}
+
+.hidden{
+    display:none;
+}
+
+.unhidden{
+    display:block;
+}
+
+/* Button Style - only effects the button*/
+.submit{
+    background-color: #EAAB00;
+    background: -webkit-gradient(linear, left top, left bottom, from(#EAAB00), to(#d19800));
+    background: -webkit-linear-gradient(top, #EAAB00, #d19800);
+    background: -moz-linear-gradient(top, #EAAB00, #d19800);
+    background: -ms-linear-gradient(top, #EAAB00, #d19800);
+    background: -o-linear-gradient(top, #EAAB00, #d19800);
+    background: linear-gradient(top, #EAAB00, #d19800);
+    border: 1px solid #EAAB00;
+    border-bottom: 1px solid #d19800;
+    border-radius: 3px;
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    -ms-border-radius: 3px;
+    -o-border-radius: 3px;
+    box-shadow: inset 0 1px 0 0 #ffc21e;
+    -webkit-box-shadow: 0 1px 0 0 #ffc21e inset ;
+    -moz-box-shadow: 0 1px 0 0 #ffc21e inset;
+    -ms-box-shadow: 0 1px 0 0 #ffc21e inset;
+    -o-box-shadow: 0 1px 0 0 #ffc21e inset;
+    color: black;
+    font-weight: bold;
+    padding: 6px 20px;
+    text-align: center;
+    margin-left: center;
+    margin-right: center;
+    	
+
+
+}
+.submit:hover {
+    opacity:.85;
+    cursor: pointer; 
+}
+.submit:active {
+    border: 1px solid #d19800;
+    box-shadow: 0 0 10px 5px #d19800 inset; 
+    -webkit-box-shadow:0 0 10px 5px #d19800 inset ;
+    -moz-box-shadow: 0 0 10px 5px #d19800 inset;
+    -ms-box-shadow: 0 0 10px 5px #d19800 inset;
+    -o-box-shadow: 0 0 10px 5px #d19800 inset;
+     
+}

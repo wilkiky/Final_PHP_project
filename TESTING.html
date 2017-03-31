@@ -1,0 +1,26 @@
+<html>
+<head>
+    <Title> Auto Refresh </Title>
+</head>
+<body>
+<div id="one">A</div>
+<div id="auto">B</div>
+<div id="three">C</div>
+<script type="text/javascript" src="jquery-3.1.1.js"></script>
+<script type="text/javascript">
+    $(document).ready(function ()
+    {
+        $('#one').load('TESTING.php')
+        refresh();
+    });
+    function refresh()
+    {
+        setTimeout(function ()
+        {
+            $('#one').fadeOut('slow').load('TESTING.php').fadeIn('slow');
+            refresh();
+        }, 200);
+    }
+</script>
+</body>
+</html>

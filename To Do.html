@@ -1,0 +1,66 @@
+
+Session Requirement (Admins)
+<?php
+    //forces a user to be logged into the application before accessing this page
+    session_start();
+    if ($_SESSION['login']!="Admin")
+    {
+        header("Location: index.php");
+    }
+?>
+Session Requirement (Techs)
+<?php
+    //forces a user to be logged into the application before accessing this page
+    session_start();
+    if ($_SESSION['login']!="Tech")
+    {
+        header("Location: index.php");
+    }
+?>
+Session Requirement (Viewer)
+<?php
+    //forces a user to be logged into the application before accessing this page
+    session_start();
+    if ($_SESSION['login']!="Viewer")
+    {
+        header("Location: index.php");
+    }
+?>
+------------------------------------------------------------------------------------------------------------------------
+Add to Database:
+$connect = mysqli_connect($host,$user,$password,$database);
+if(!$connect)
+{
+    die("Connection Failed");
+}
+$sql = "INSERT INTO Database.Table (Variable1, Variable2, Variable3...) <--Column Names from DB
+VALUES ('Variable1', 'Variable2', 'Variable3', '...')"; <--Variables storing input
+if(mysqli_query($connect,$sql))
+{
+    echo "New record created";
+}
+else
+{
+    echo mysqli_error($connect);
+}
+mysqli_close($connect);
+header("Location: Desired Location.php");
+------------------------------------------------------------------------------------------------------------------------
+Update Database:
+$connect = mysqli_connect($host, $user, $password, $database);
+if(!$connect)
+{
+    die("Connection Failed");
+}
+$sql = "UPDATE Database.Table SET DatabaseVariable = ChangedValue WHERE DatabaseVariable=ASetValue";
+if ($connect->query($sql) === TRUE)
+{
+    echo "Record updated successfully";
+}
+else
+{
+    echo "Error updating record: " . $connect->error;
+}
+$connect->close();
+header("Location: EditUser.php");
+------------------------------------------------------------------------------------------------------------------------
